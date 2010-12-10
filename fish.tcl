@@ -46,6 +46,10 @@ proc fish::get_key {chan} {
 
 proc fish::handler {server nick uhost chan argv} {
 	if {![fish::enabled $chan]} { return }
-	irssi_print "Got $argv"
-	irssi_print "\[F\] <$nick> [decrypt [fish::get_key $chan] $argv]"
+	set text "\[\002fish\002\] [decrypt [fish::get_key $chan] $argv]"
+	emit_message_public $server $chan $nick $uhost $text
+}
+
+proc fish::crypt {key text} {
+	irssi_print [encrypt $key $text]
 }
