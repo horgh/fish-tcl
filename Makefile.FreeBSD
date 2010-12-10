@@ -1,6 +1,6 @@
 TCL_DIR=/usr/local/include/tcl8.5
 LIB_DIR=/usr/local/lib
-TCL_LIB=tcl8.5
+TCL_LIB=tcl85
 
 TCL_INCLUDES=-I$(TCL_DIR)
 
