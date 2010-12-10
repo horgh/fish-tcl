@@ -53,3 +53,5 @@ proc fish::handler {server nick uhost chan argv} {
 proc fish::crypt {key text} {
 	irssi_print [encrypt $key $text]
 }
+
+irssi_print "fish.tcl loaded"
