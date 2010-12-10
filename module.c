@@ -17,7 +17,7 @@ Encrypt_Cmd(ClientData cdata, Tcl_Interp *interp, int objc, Tcl_Obj *const objv[
 	const char *s = Tcl_GetString(objv[2]);
 
 	// paranoid of buffer overflow
-	if (strlen(s) > 200) {
+	if (strlen(s) >= 512) {
 		Tcl_Obj *str = Tcl_ObjPrintf("not encrypting due to length");
 		Tcl_SetObjResult(interp, str);
 		return TCL_ERROR;
@@ -45,7 +45,7 @@ Decrypt_Cmd(ClientData cdata, Tcl_Interp *interp, int objc, Tcl_Obj *const objv[
 	const char *s = Tcl_GetString(objv[2]);
 
 	// paranoid of buffer overflow
-	if (strlen(s) > 200) {
+	if (strlen(s) >= 512) {
 		Tcl_Obj *str = Tcl_ObjPrintf("not decrypting due to length");
 		Tcl_SetObjResult(interp, str);
 		return TCL_ERROR;

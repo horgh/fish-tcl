@@ -48,11 +48,11 @@ proc fish::handler {server nick uhost chan argv} {
 	if {![fish::enabled $chan]} { return }
 	set key [fish::get_key $chan]
 	if {[catch {decrypt $key $argv} decrypted]} {
-		irssi_print "\[\002fish\002\] Message from $nick too long."
+		set output "\[\002fish\002\] Message too long"
 	} else {
 		set output "\[\002fish\002\] $decrypted"
-		emit_message_public $server $chan $nick $uhost $output
 	}
+	emit_message_public $server $chan $nick $uhost $output
 }
 
 proc fish::crypt {key text} {
