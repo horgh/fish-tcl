@@ -48,7 +48,7 @@ proc fish::handler {server nick uhost chan argv} {
 	if {![fish::enabled $chan]} { return }
 	set key [fish::get_key $chan]
 	if {[catch {decrypt $key $argv} decrypted]} {
-		set output "\[\002fish\002\] Message too long"
+		set output "\[\002fish\002\] Error decrypting: $decrypted"
 	} else {
 		set output "\[\002fish\002\] $decrypted"
 	}
