@@ -52,6 +52,7 @@ proc fish::handler {server nick uhost chan argv} {
 	} else {
 		set output "\[\002fish\002\] $decrypted"
 	}
+	signal_stop
 	emit_message_public $server $chan $nick $uhost $output
 }
 
